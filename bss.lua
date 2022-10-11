@@ -32,6 +32,7 @@ if isfile("rosemoc.txt") == false then
 end
 
 -- Script temporary variables
+
 local player = game.Players.LocalPlayer
 local playerstatsevent = game:GetService("ReplicatedStorage").Events.RetrievePlayerStats
 local statstable = playerstatsevent:InvokeServer()
@@ -4270,9 +4271,9 @@ task.spawn(function()
     end)
 end)
 
-if _G.autoload then
-    if isfile("kocmoc/BSS_" .. _G.autoload .. ".json") then
-        kocmoc = game:service("HttpService"):JSONDecode(readfile("kocmoc/BSS_" .. _G.autoload .. ".json"))
+if getgenv().autoload then
+    if isfile("kocmoc/BSS_" .. getgenv().autoload .. ".json") then
+        kocmoc = game:service("HttpService"):JSONDecode(readfile("kocmoc/BSS_" .. getgenv().autoload .. ".json"))
         for i,v in pairs(guiElements) do
             for j,k in pairs(v) do
                 local obj = k:GetObject()
