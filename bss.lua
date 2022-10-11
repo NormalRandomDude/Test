@@ -4271,9 +4271,9 @@ task.spawn(function()
     end)
 end)
 
-if getgenv().autoload then
-    if isfile("kocmoc/BSS_" .. getgenv().autoload .. ".json") then
-        kocmoc = game:service("HttpService"):JSONDecode(readfile("kocmoc/BSS_" .. getgenv().autoload .. ".json"))
+if _G.autoload then
+    if isfile("kocmoc/BSS_" .. _G.autoload .. ".json") then
+        kocmoc = game:service("HttpService"):JSONDecode(readfile("kocmoc/BSS_" .. _G.autoload .. ".json"))
         for i,v in pairs(guiElements) do
             for j,k in pairs(v) do
                 local obj = k:GetObject()
