@@ -87,7 +87,7 @@ for _, v in pairs(game:GetService("CoreGui"):GetDescendants()) do
 end
 
 getgenv().temptable = {
-    version = "4.3.0",
+    version = "4.3.1",
     blackfield = "Sunflower Field",
     redfields = {},
     bluefields = {},
@@ -2060,7 +2060,7 @@ function formatString(Planter, Field, Nectar)
 end
 
 local Config = {
-    WindowName = "Rosemoc v" .. temptable.version .. " Re-Remastered By RoseGold",
+    WindowName = "RosePog v" .. temptable.version .. " Re-Re-Remastered By KhoaDeepTryy",
     Color = Color3.fromRGB(39, 133, 11),
     Keybind = Enum.KeyCode.Semicolon
 }
