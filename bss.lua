@@ -2401,7 +2401,7 @@ guiElements["toggles"]["autoant"] = autoanttoggle
 
 local serverhopkill = combtab:CreateSection("Serverhopping Combat")
 serverhopkill:CreateButton("Vicious Bee Serverhopper ["..Danger.."]["..ExploitSpecific.."]", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Ericd71/skiP/main/viciousbeeserverhop.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NormalRandomDude/RosePog/main/viciousbeeserverhop.lua"))()
 end):AddToolTip("Serverhops for rouge vicious bees")
 serverhopkill:CreateLabel("")
 serverhopkill:CreateLabel("["..Danger.."] These functions will unload the UI")
