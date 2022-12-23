@@ -2950,7 +2950,7 @@ local themes = guisettings:CreateDropdown("Image", {
 end)
 themes:SetOption("Default")
 local kocmocs = setttab:CreateSection("Configs")
-kocmocs:CreateTextBox("Config Name", "USERNAME", true, function(Value) temptable.configname = game.Players.LocalPlayer.Name end)
+kocmocs:CreateTextBox("Config Name", "eg: redhive", false, temptable.configname = game.Players.LocalPlayer.Name)
 kocmocs:CreateButton("Load Config", function()
     if not isfile("kocmoc/BSS_" .. temptable.configname .. ".json") then
         api.notify("Rosemoc " .. temptable.version, "No such config file!", 2)
