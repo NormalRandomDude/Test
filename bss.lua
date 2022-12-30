@@ -2061,7 +2061,7 @@ end
 
 local Config = {
     WindowName = "RosePog v" .. temptable.version .. " Re-Re-Remastered By Ur Mom",
-    Color = Color3.fromRGB(51, 255, 255),
+    Color = Color3.fromRGB(39, 133, 11),
     Keybind = Enum.KeyCode.Semicolon
 }
 local Window = library:CreateWindow(Config, game:GetService("CoreGui"))
