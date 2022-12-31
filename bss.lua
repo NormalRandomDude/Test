@@ -1329,6 +1329,16 @@ function getcloud()
     end
 end
 
+function getcoco(v)
+    if temptable.coconut then repeat task.wait() until not temptable.coconut end
+    temptable.coconut = true
+    api.tween(.1, v.CFrame)
+    repeat task.wait() api.walkTo(v.Position) until not v.Parent
+    task.wait(.1)
+    temptable.coconut = false
+    table.remove(temptable.coconuts, table.find(temptable.coconuts, v))
+end
+
 function getfuzzy()
     pcall(function()
         for i, v in next, game.workspace.Particles:GetChildren() do
@@ -3145,36 +3155,21 @@ task.spawn(function()
 end)
 
 game.Workspace.Particles.ChildAdded:Connect(function(v)
-    if (v:IsA("Part") or v:IsA("MeshPart")) and not temptable.started.ant and not temptable.started.vicious and kocmoc.toggles.autofarm and not temptable.converting and not temptable.planting then
-        if v.Name == "WarningDisk" and kocmoc.toggles.farmcoco then
-            task.wait(0.5)
-            if v.BrickColor == BrickColor.new("Lime green") then
-                task.wait(1.25)
-                if (v.Position - api.humanoidrootpart().Position).magnitude > 100 then return end
-                if temptable.lookat then
-                    api.humanoidrootpart().Velocity = Vector3.new(0, 0, 0)
-                    api.humanoidrootpart().CFrame = CFrame.new(v.CFrame.p, temptable.lookat)
-                    task.wait()
-                    api.humanoidrootpart().CFrame = CFrame.new(v.CFrame.p, temptable.lookat)
-                else
-                    api.humanoidrootpart().Velocity = Vector3.new(0, 0, 0)
-                    api.humanoidrootpart().CFrame = CFrame.new(v.CFrame.p)
-                    task.wait()
-                    api.humanoidrootpart().CFrame = CFrame.new(v.CFrame.p)
-                end
-            end
-        elseif v.Name == "Crosshair" and kocmoc.toggles.collectcrosshairs then
-            local timestamp = Instance.new("NumberValue", v)
-            timestamp.Name = "timestamp"
-            timestamp.Value = tick()
-        elseif string.find(v.Name, "Bubble") and getBuffTime("5101328809") > 0.2 and kocmoc.toggles.farmbubbles then
-            if not kocmoc.toggles.farmpuffshrooms or (kocmoc.toggles.farmpuffshrooms and not game.Workspace.Happenings.Puffshrooms:FindFirstChildOfClass("Model")) then
-                if (v.Position - api.humanoidrootpart().Position).magnitude > 100 then return end
-                table.insert(temptable.bubbles, v)
+    if not temptable.started.vicious and not temptable.started.ant then
+        if v.Name == "WarningDisk" and not temptable.started.vicious and kocmoc.toggles.autofarm and not temptable.started.ant and kocmoc.toggles.farmcoco and (v.Position-api.humanoidrootpart().Position).magnitude < temptable.magnitude and not temptable.converting then
+            table.insert(temptable.coconuts, v)
+            getcoco(v)
+            gettoken()
+        elseif v.Name == "Crosshair" and v ~= nil and v.BrickColor ~= BrickColor.new("Forest green") and not temptable.started.ant and v.BrickColor ~= BrickColor.new("Flint") and (v.Position-api.humanoidrootpart().Position).magnitude < temptable.magnitude and kocmoc.toggles.autofarm and kocmoc.toggles.collectcrosshairs and not temptable.converting then
+            if #temptable.crosshairs <= 3 then
+                table.insert(temptable.crosshairs, v)
+                getcrosshairs(v)
+                gettoken()
             end
         end
     end
 end)
+
 
 task.spawn(function()
     while task.wait() do
