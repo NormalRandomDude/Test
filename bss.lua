@@ -3764,7 +3764,6 @@ task.spawn(function()
 	if tool then getsenv(tool.ClientScriptMouse).collectStart(game:GetService("Players").LocalPlayer:GetMouse()) end end collectorSteal() workspace.NPCs.Onett.Onett["Porcelain Dipper"].ClickEvent:FireServer() end
 end end)
         end
-    end
 end)
 
 task.spawn(function()
