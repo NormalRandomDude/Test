@@ -3752,23 +3752,17 @@ end)
 
 task.spawn(function()
     while task.wait(0.2) do
-        if kocmoc.toggles.autodig then
-            if player.Character then
-                local tool = player.Character:FindFirstChildOfClass("Tool")
-                if tool then
-                    local clickEvent = tool:FindFirstChild("ClickEvent", true)
-                    if clickEvent then
-                        clickEvent:FireServer()
-                    end
-                end
-                if kocmoc.vars.autodigmode == "Collector Steal" then
-                    local onnet = game.Workspace.NPCs.Onett.Onett["Porcelain Dipper"]:FindFirstChild("ClickEvent")
-                    if onnet then
-                        task.wait()
-                        onnet:FireServer()
-                    end
-                end
-            end
+            if kocmoc.toggles.autodig then 
+	if game.Players.LocalPlayer then 
+		if game.Players.LocalPlayer.Character then 
+			if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") then 
+				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("ClickEvent", true) then 
+				tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") or nil 
+				end 
+			end 
+		end 
+	if tool then getsenv(tool.ClientScriptMouse).collectStart(game:GetService("Players").LocalPlayer:GetMouse()) end end collectorSteal() workspace.NPCs.Onett.Onett["Porcelain Dipper"].ClickEvent:FireServer() end
+end end)
         end
     end
 end)
